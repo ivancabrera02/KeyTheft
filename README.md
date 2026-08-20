@@ -1,6 +1,6 @@
 # KeyTheft
 
-**Novel SAM dump via RemoteRegistry handle theft — bypasses lsass PPL, outputs XOR-encrypted PNG files with zero `regf` signature on disk.**
+**SAM dump via RemoteRegistry handle theft, outputs XOR-encrypted PNG files with zero `regf` signature on disk.**
 
 ## What is this?
 
@@ -184,5 +184,3 @@ The `.tmp` intermediate file (plaintext hive) exists only in memory-mapped I/O b
 - If RemoteRegistry service is **disabled** (not just stopped), it cannot be started. Some hardened environments disable it via GPO.
 - `SeBackupPrivilege` is required regardless of handle source, this is checked by `NtSaveKey` in kernel mode.
 - The technique generates a service start event for RemoteRegistry, which is unusual in environments where this service is normally stopped.
-
-This tool is provided for **authorized security testing and research only**. Only use it on systems you own or have explicit written permission to test. Unauthorized access to computer systems is illegal.
