@@ -148,21 +148,8 @@ python3 sam_extract.py system.hiv sam.hiv
 | RemoteRegistry service started | Event Log: System 7036 |
 | `OpenProcess(svchost, 0x40)` | Sysmon Event 10 (TargetImage: svchost.exe) |
 | Handle duplication from svchost | ETW: `Microsoft-Windows-Kernel-Audit-API-Calls` |
-| SeDebugPrivilege + SeBackupPrivilege enabled | Security Event 4672 |
 | `.png` file created (benign-looking) | Sysmon Event 11 (FileCreate) **blends with normal activity** |
 | NtSaveKey call | ETW: `Microsoft-Windows-Kernel-Registry` |
-
-### What it does NOT generate
-
-| Absent event | Why it matters |
-|-------------|----------------|
-| Registry open on `HKLM\SAM` from attacker PID | All standard SAM dump detection rules trigger on this |
-| Sysmon Event 12/13/14 for SAM | Our process never calls NtOpenKey on SAM |
-| OpenProcess on lsass | EDR lsass protection rules don't fire |
-| SAMR RPC connection | Network-based SAM dump detection is blind |
-| lsass PROCESS_VM_READ | Minidump/credential theft rules don't fire |
-| `.hiv` / `.save` file on disk | Sysmon Event 11 filename-based rules don't fire |
-| `regf` magic bytes in output file | YARA rules for registry hive dumps don't match |
 
 ### Why PNG disguise defeats file-based detection
 
