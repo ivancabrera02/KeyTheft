@@ -98,6 +98,8 @@ gcc -O2 -municode -o KeyTheft.exe KeyTheft.c -ladvapi32
 KeyTheft.exe [sam_output.png] [system_output.png]
 ```
 
+<img width="1333" height="816" alt="SAMVALID" src="https://github.com/user-attachments/assets/4d0f9149-19b2-476c-9f20-cbebce58fb90" />
+
 ### Decoding
 
 Use `decode.py` to strip the PNG header and XOR decrypt back to standard `.hiv` format:
